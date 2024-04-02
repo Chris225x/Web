@@ -22,7 +22,16 @@
   <%  
       String agreed = request.getParameter("saveAgreed");
   
-      if (agreed != null) {
+  // practiceLogin.jsp에서 saveAgreed가 체크가 되어 있으면
+      if (agreed != null) { // 아이디 저장이 체크된 경우
+    	// id, pw에 대한 쿠키를 생성한다.
+        // 쿠키 만료 시간은 10분으로 설정
+      // Cookie idCookie =
+      //     new Cookie("id", request.getParameter("id"));
+      // Cookie pwCookie = 
+      //     new Cookie("pw", request.getParameter("pw"));
+        
+        	
       String id = request.getParameter("id");
       String pw = request.getParameter("pw");
       

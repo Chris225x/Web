@@ -8,6 +8,12 @@
 </head>
 <body>
     <%
+      // * 쿠키(Cookies)
+      // - 웹 브라우저가 저장하는 데이터
+      // - 필요한 정보를 클라이언트(웹 브라우저)에서 저장
+      // - 다양한 정보 추적을 목적으로 데이터가 유지됨
+      // - 주로 브라우저에서 사용자가 선택한 내용들을 저장
+      // 쿠키는 내가 쿠폰을 들고있다 세션은 커피숍이 쿠폰을 들고 있다
       request.setCharacterEncoding("UTF-8");
       String firstName = request.getParameter("firstName");
       String lastName = request.getParameter("lastName");
