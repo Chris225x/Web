@@ -9,4 +9,19 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- 필터 설정 -->
+  <filter>
+     <!-- filter-mapping의 filter-name과 일치 -->
+     <filter-name>TestFilter</filter-name>
+     <filter-class>web.ch20.filter.TestFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  
+     <filter-name>TestFilter</filter-name>
+     <url-pattern>/ch20/filterTest.jsp</url-pattern>
+     <url-pattern>/member/*</url-pattern><!-- /*은 본재하는 모든 하위 경로 -->
+  </filter-mapping>
+  
 </web-app>

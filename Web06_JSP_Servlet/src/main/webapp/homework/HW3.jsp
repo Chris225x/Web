@@ -34,7 +34,7 @@
      
       Id : <input type="text" name="id" placeholder="아이디 입력"> <br>    
       Pw : <input type="password" name="pw" placeholder="패스워드 입력"> <br><br>
-       <input type="submit" value="전송"><br>
+       <input type="submit" value="로그인"><br>
     </form>
 
 

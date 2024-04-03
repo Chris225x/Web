@@ -16,7 +16,7 @@
     String pw = request.getParameter("pw");
     
     // 만약 id가 "test"이고 pw가 "1234"이면 세션을 생성하고 HW3_login_result.jsp로 이동
-    if ("test".equals(id) && "1234".equals(pw)) {
+    if (id.equals("test") && pw.equals("1234")) {
 
         session.setMaxInactiveInterval(60); // 세션 만료 시간 설정 (초 단위)
         session.setAttribute("id", id); // id 세션 생성
