@@ -32,7 +32,7 @@ public class DetailServlet extends HttpServlet {
 		board.setContent("임의로 데이터를 작성하고 있습니다.");
 		board.setRegDate(new Date());
 		
-		// request attribute 방식으로 객체 데이터 전송 이것을 운영
+		// request attribute 방식으로 객체 데이터 전송 이것을 운영 세션은 유지가 되고 정보가 날아감 하지만 이것은 주고 땡임 세션은 로그인 용도만 씀
 		request.setAttribute("board", board);
 		
 		// ServletContext : 애플리케이션 정보 제공 상속받은 클래스에 있는 친구 인스턴스도 이미 생성이 되어있음
