@@ -8,8 +8,8 @@
 </head>
 <body>
      <h2>이름/나이 입력</h2>
-     <!-- POST 방식으로 result.jsp에 데이터를 전송 -->
-     <form action="result.jsp" method="post">
+     <!-- GET 방식으로 result.jsp에 데이터를 전송 -->
+     <form action="result.jsp" method="get">
          <p>이름</p>
          <input type="text" name="name" placeholder="이름 입력">
          <p>나이</p>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XML 파일 호출</title>
+<style type="text/css">
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 5px;
+}
+</style>
+</head>
+<body>
+  <h2>XML 파일 호출</h2>
+  <button type="button" onclick="loadDoc()">CD 컬렉션 호출</button>
+  <br>
+  <table id="output"></table>
+  <script type="text/javascript">
+      function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log(this);
+            myFunction(this); // 리턴 정보를 this가 가지고 있고, myFunction에 인자값으로 전달
+          }
+        }
+        xhttp.open("GET", "03_cd_catalog.xml", true);
+        xhttp.send();
+      }
+      
+      function myFunction(xml) {
+        var xmlDoc = xml.responseXML; // 리턴된 정보에서 xml파일 정보로 저장
+        var table = "<tr><th>Artist</th><th>Title</th><th>Country</th></tr>";
+        var x = xmlDoc.getElementsByTagName("CD");
+        var i;
+        
+        for (i = 0; i < x.length; i++){
+          table += "<tr><td>" + x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue + "</td>"
+          			+ "<td>" + x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue + "</td>"
+          			+ "<td>" + x[i].getElementsByTagName("COUNTRY")[0].childNodes[0].nodeValue + "</td></tr>";
+        }
+        
+        document.getElementById("output").innerHTML = table;
+      }
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>글자 추천</title>
+</head>
+<body>
+	<h2>아래에 글을 입력해 주세요.</h2>
+	<p>
+		첫 글자 : <input type="text" id="txt" onkeyup="showHint(this.value)">
+	</p>
+	<p>
+		추천 : <span id="txtHint"></span>
+	</p>
+	
+	<script type="text/javascript">
+		function showHint(str) {
+			console.log(str);
+			
+			if(str.length == 0) {
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			}
+	
+	 		var xhttp = new XMLHttpRequest(); // 브라우저 내장 request 객체
+	 		xhttp.onreadystatechange = function(){
+	 			// readyState 속성이 변경될 때 호출할 함수를 정의
+	 			if(this.readyState == 4 && this.status == 200) {
+	 				// this.responseText : 응답 데이터를 문자열로 변환
+	 				console.log(this.responseText);
+	 				document.getElementById("txtHint").innerHTML
+	 				 	= this.responseText;
+	 			}
+	 		}; 
+	 		
+	 		xhttp.open("GET", "04_get_hint.jsp?str=" + str, true);
+	 		xhttp.send();
+		}
+	</script>
+
+</body>
+</html>

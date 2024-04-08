@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>XMLHttpRequest GET/POST</title>
+</head>
+<body>
+   <h2>XMLHttpRequest</h2>
+   <button type="button" onclick="loadDocGet()">get 데이터 요청</button>
+   <button type="button" onclick="loadDocPost()">post 데이터 요청</button>
+   <div id="output"></div>
+   
+   <script type="text/javascript">
+           
+     function loadDocGet() {
+         let xhttp = new XMLHttpRequest(); // 브라우저 내장 request 객체
+         xhttp.onreadystatechange = function() {
+            console.log(this.readyState);
+            console.log(this.status);
+            // readState 속성이 변경될 때 호출할 함수를 정의
+            if(this.readyState == 4 && this.status == 200) { // 404는 없음(찾을수 없음)
+               console.log(this);
+               document.getElementById("output").innerHTML
+                  = this.responseText;
+               // this.reponseText : 응답 데이터를 문자열로 변환
+            }
+         };
+         
+         xhttp.open("GET", "02_date.jsp?method=get&content=Hello", true);
+         // open(method, url, async) : xhttp에 보낸 정보 세팅
+         // method : 요청 타입 GET or POST
+         // url : 파일 또는 요청 서버 위치
+         // async : true(비동기) or false(동기)
+         
+         xhttp.send(); // 보내는 거
+         
+      } // end loadDocPost()
+    
+      function loadDocPost() {
+          let xhttp = new XMLHttpRequest(); // 브라우저 내장 request 객체
+          xhttp.onreadystatechange = function() {
+             console.log(this.readyState);
+             console.log(this.status);
+             // readState 속성이 변경될 때 호출할 함수를 정의
+             if(this.readyState == 4 && this.status == 200) { // 404는 없음(찾을수 없음)
+                console.log(this);
+                document.getElementById("output").innerHTML
+                   = this.responseText;
+                // this.reponseText : 응답 데이터를 문자열로 변환
+             }
+          };
+          
+          xhttp.open("POST", "02_date.jsp", true);    
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.send("method=post&content=Hello"); // 보내는 거
+          
+       } // end loadDocGet()
+      
+    </script>
+   
+</body>
+</html>
