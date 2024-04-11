@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-3.7.1.js">	
+</script>
+<title>검색어를 입력하세요</title>
+</head>
+<body>
+<h3>검색 키워드 입력하세요.</h3>
+	<p>
+		검색 : <input type="text" id="txt">
+	<p>
+		추천 : <br><span id="txtHint"></span>
+	</p>
+	
+	<script type="text/javascript">
+	   $(document).ready(function(){
+	       $('#txt').keyup(function(){
+	    	   let keyword = $('#txt').val();
+	    	   console.log(keyword);
+	    	   
+	    	   $.ajax({
+	    		   type : 'get',
+	    		   url : '../search.do',
+	    		   data : {'keyword' : keyword},
+	    		   success : function(result) {
+	    			console.log(typeof(result));
+	    			let obj = JSON.parse(result);
+	    			let list = '';
+	    			for(let x in obj) {
+	    				list += 
+	    					"<a href='https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query="+ obj[x].title +"'>"
+	    					+ obj[x].title + '</a><br>';
+	    			}
+	    			$('#txtHint').html(list);
+	    		   }    		   
+	    	   }); 
+	       }); // end txt.keyup()
+	   }); // end document
+	</script>
+</body>
+</html>

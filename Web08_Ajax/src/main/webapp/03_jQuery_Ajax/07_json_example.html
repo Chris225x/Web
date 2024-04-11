@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-3.7.1.js">
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>회원 정보</h2>
+	<p id="info"></p>
+	<script type="text/javascript">
+	    // $.get(url, callback);
+	    // $.getJSON(url, data, callback) : 요청한 url의 JSON 데이터를 호출
+	    // url : 서버의 요청 주소
+	    // data : 요청과 함께 보낼 데이터(선택)
+        // callback : JSON 데이터가 리턴됐을때 처리할 함수
+	    
+	       $(document).ready(function() {
+			getData(); // 함수 호출
+ 			function getData() {
+				$.getJSON('../info.do', function(result) {
+					console.log(result);
+					console.log(typeof(result));
+					
+					let list = '';
+					for(x in result) {
+						list += result[x].userid + '<br>' +
+						        result[x].password + '<br>' +
+						        result[x].email + '<br>';
+					}
+					$('#info').html(list);
+				}); // end getJSON()            
+			} // end getData()
+		}); // end document
+	</script>
+
+</body>
+</html>

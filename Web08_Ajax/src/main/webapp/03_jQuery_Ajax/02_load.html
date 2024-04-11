@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-3.7.1.js">
+</script>
+<title>jQuery Ajax load</title>
+</head>
+<body>
+    <div id="output">
+       <h2>jQuery Ajax로 현재 텍스트 변경</h2>
+    </div>
+    <button>외부 컨텐츠 가져오기</button>
+    <script type="text/javascript">
+
+       // - $(selector).load(URL, data, callback);
+              
+       $(document).ready(function(){
+    	   $('button').click(function(){
+    		  $('#output').load("01_demo_test.txt #p1", function(responseTxt, statusTxt, xhr){
+    			  if(statusTxt == "success") { // 데이터 송수신이 성공하면
+    				  alert('외부 컨텐츠 로드 성공');
+    			  } else {
+    				  alert('Error : ' + xhr.status + " : " + xhr.statusText);
+    				  
+    			  }
+    		  }); 
+    		  // 01_demo_test.txt의 #p 내용을 #output에 저장한다.
+    	   });
+       });
+    
+    
+    
+    </script>
+
+
+</body>
+</html>

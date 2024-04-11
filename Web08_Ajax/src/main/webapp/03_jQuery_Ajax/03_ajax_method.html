@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-3.7.1.js">
+</script>
+<title>Ajax Method</title>
+</head>
+<body>
+   <div id="output">변경될 텍스트</div>
+   <button>외부 컨텐츠 가져오기</button>
+   <script type="text/javascript">
+       // * $.ajax()
+       // - ajax load 메소드를 간략화한 메소드
+       // - 기본 형태
+       //   $.ajax({name : value, name : value, ...});
+       // - name으로 선택할 수 있는 요소
+       //   type : GET or POST
+       //   url : 경로
+       //   data : 보낼 데이터 패키지
+       //   success : 호출 성공 시 리턴될 내용
+       
+       $(document).ready(function(){
+    	   $('button').click(function(){
+    		   $.ajax({
+    			   type : "get",
+    			   url : "../ajax_test.do",
+    			   data : {
+    				   id : "test", // request parameter
+    				   pw : "1234"
+    			   },
+    			   success : function(result) {
+    				   // result : ajax_test.do에서 작성된 내용을 리턴해서 저장한 결과
+    				   console.log(result);
+    			       $('#output').html(result);
+    			       
+    			   }
+    		   }); // end ajax()
+    		   
+    	   }); // end button.click()
+       }); // end document
+       
+       
+   </script>
+   
+</body>
+</html>

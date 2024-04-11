@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://code.jquery.com/jquery-3.7.1.js">
+</script>
+<title>Ajax JSON</title>
+</head>
+<body>
+    <p id="output"></p>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$.ajax({
+    		type : "get",
+    		url : "06_json_test.txt",
+    		success : function(result) {
+    			console.log(result);
+    			console.log(typeof(result));
+    			// 즉석 퀴즈. 전송받은 json 데이터를 id="output"인 태그에 보여주기
+    			// 예시)
+    			// 이름 : mok
+    			// 나이 : 20
+    			// 펫 : dog, 이름 : choco
+    			// 펫 : cat, 이름 : navi
+    			// JSON을 JavaScript 객체로 변환
+    			 let obj = JSON.parse(result); 
+    			 console.log(typeof obj);
+    			 let str = "";
+    			 str += "이름 : " + obj.name + "<br>";
+    			 str += "나이 : " + obj.age + "<br>";
+    			 for(let x in obj.pets) {
+    				 str += "펫 : " + obj.pets[x].animal +
+    				        ", 이름 : " + obj.pets[x].name + "<br>";				 
+    			 }
+    			 
+    			 $('#output').html(str);
+    			 
+    			 // document.getElementById("output").innerHTML 
+    			 //+= '이름 : '+obj.name + '<br>';
+    			 // document.getElementById("output").innerHTML 
+    			 //+= '나이 : '+obj.age + '<br>';
+    			 //document.getElementById("output").innerHTML 
+    			 //+= '펫 : '+obj.pets[0].animal + ' 이름 : ' +obj.pets[0].name+ '<br>';
+    			 //document.getElementById("output").innerHTML 
+    			 //+= '펫 : '+obj.pets[1].animal + ' 이름 : ' +obj.pets[1].name+ '<br>';
+    		}
+    	}); // end ajax()
+    }); // end document
+    </script>
+
+</body>
+</html>
