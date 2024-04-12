@@ -101,8 +101,7 @@ public class BoardDAOImple implements BoardDAO, BoardQuery{
          pstmt.setInt(1, boardId);
          
          rs = pstmt.executeQuery();
-         
-         
+               
          String boardTitle;
          String boardContent;
          String memberId;

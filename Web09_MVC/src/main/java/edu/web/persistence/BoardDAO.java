@@ -5,7 +5,7 @@ import java.util.List;
 import edu.web.domain.BoardVO;
 
 public interface BoardDAO {
-	// 게시글 등록
+	// 게시글 등록 INT는 보통 성공 확인 1:성공 0: 실패
 	int insert(BoardVO vo);
 	
 	// 게시글 전체 조회

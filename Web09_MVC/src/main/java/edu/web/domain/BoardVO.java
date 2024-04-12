@@ -14,6 +14,23 @@ public class BoardVO {
 
 	}
 
+	
+	public BoardVO(String boardTitle, String boardContent, String memberId) {
+		super();
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.memberId = memberId;
+	}
+	
+	public BoardVO(int boardId, String boardTitle, String boardContent) {
+		super();
+		this.boardId = boardId;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+
+	}
+	
+	
 	public BoardVO(int boardId, String boardTitle, String boardContent, String memberId, Date boardDateCreated) {
 		super();
 		this.boardId = boardId;
