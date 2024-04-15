@@ -49,6 +49,23 @@ public interface BoardQuery {
     public static final String SQL_DELETE = 
     		"DELETE " + TABLE_NAME +
             " WHERE " + COL_BOARD_ID + " = ?";
+    
+    // 게시글 페이징 처리
+    // SELECT * FROM(
+    // SELECT ROW_NUMBER() OVER (ORDER BY BOARD_ID DESC) AS RN, BOARD.*
+    // FROM BOARD
+    // ) WHERE RN BETWEEN 2 AND 5;
+    
+    public static final String SQL_SELECT_PAGESCOPE = 
+            "SELECT * FROM("
+            + " SELECT ROW_NUMBER() OVER (ORDER BY BOARD_ID DESC) AS RN, BOARD.*"
+            + " FROM BOARD"
+            + ") WHERE RN BETWEEN ? AND ?";
+    
+    // SELECT COUNT(BOARD_ID) TOTAL_CNT FROM BOARD;
+    public static final String SQL_TOTAL_CNT = 
+    		"SELECT COUNT(BOARD_ID) TOTAL_CNT FROM BOARD";
+    
 }
 	
    

@@ -3,6 +3,7 @@ package edu.web.persistence;
 import java.util.List;
 
 import edu.web.domain.BoardVO;
+import edu.web.util.PageCriteria;
 
 public interface BoardDAO {
 	// 게시글 등록 INT는 보통 성공 확인 1:성공 0: 실패
@@ -19,6 +20,10 @@ public interface BoardDAO {
 	
 	// 게시글 삭제
 	int delete(int boardId);
+	
+	List<BoardVO> select(PageCriteria criteria);
+	
+	int getTotalCount();
 	
 }
 

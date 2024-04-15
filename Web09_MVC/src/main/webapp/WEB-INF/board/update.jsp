@@ -10,7 +10,7 @@
 <body>
 
 		<%
-		BoardVO vo = (BoardVO) request.getAttribute("detailSelect");
+		BoardVO vo = (BoardVO) request.getAttribute("vo");
 		%>
 	<h2>게시글 수정</h2>
 	<form action="update.do" method="post">

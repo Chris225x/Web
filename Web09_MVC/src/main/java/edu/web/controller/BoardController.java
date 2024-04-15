@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import edu.web.domain.BoardVO;
 import edu.web.persistence.BoardDAO;
 import edu.web.persistence.BoardDAOImple;
+import edu.web.util.PageCriteria;
+import edu.web.util.PageMaker;
 
 @WebServlet("*.do") // *.do : ~.do로 선언된 HTTP 호출에 대한 반응
 public class BoardController extends HttpServlet {
@@ -27,6 +29,7 @@ public class BoardController extends HttpServlet {
 	private static final String DELETE = "delete";
 	private static final String EXTENSION = ".jsp";
 	private static final String SERVER_EXTENSION = ".do";
+	
 	private static BoardDAO dao;
 	// 유지보수 때문에 함
 
@@ -75,23 +78,46 @@ public class BoardController extends HttpServlet {
 	private void list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("list()");
-		try {
 			// BoardDAO를 사용하여 데이터베이스에서 게시물 목록을 가져옴
-			List<BoardVO> boardList = dao.select();
+			//List<BoardVO> boardList = dao.select();
+            String page = request.getParameter("page");
+					
+			PageCriteria criteria = new PageCriteria();
+			
+			if(page != null) {
+				criteria.setPage(Integer.parseInt(page));			
+			}
+			
+			 List<BoardVO> boardList = dao.select(criteria);
+			
+			// list.jsp 페이지로 포워딩
+			String path = BOARD_URL + LIST + EXTENSION;
+			RequestDispatcher dispatcher 
+			     = request.getRequestDispatcher(path);
 
 			// 가져온 게시물 목록을 request에 속성으로 설정하여 list.jsp 페이지로 전송
 			request.setAttribute("boardList", boardList);
-
-			// list.jsp 페이지로 포워딩
-			String path = BOARD_URL + LIST + EXTENSION;
-			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCriteria(criteria);
+			int totalCount = dao.getTotalCount();
+			pageMaker.setTotalCount(totalCount);
+			pageMaker.setPageData();
+			System.out.println("전체 게시글 수 : " + pageMaker.getTotalCount());
+			System.out.println("현재 선택된 페이지 : " + criteria.getPage());
+			System.out.println("한 페이지 당 게시글 수 : " 
+					   + criteria.getNumsPerPage());
+			System.out.println("페이지 링크 번호 개수 :"
+					   + pageMaker.getNumsOfPageLinks());
+			System.out.println("시작 페이지 링크 번호 : "
+					   + pageMaker.getStartPageNo());
+			System.out.println("끝 페이지 링크 번호 : "
+					   + pageMaker.getEndPageNo());
+			
+            request.setAttribute("pageMaker", pageMaker);			
 			dispatcher.forward(request, response);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			// 예외 처리 코드 추가
-			// 예외 발생 시 오류 페이지로 이동 또는 메시지 출력 등의 처리를 추가할 수 있습니다.
-		}
+			
+	
 	} // end list()
 
 	// TODO : register.jsp 페이지 호출
@@ -118,9 +144,9 @@ public class BoardController extends HttpServlet {
 		BoardVO vo = new BoardVO(boardTitle, boardContent, memberId);
 		System.out.println(vo);
 		int result = dao.insert(vo);
-		System.out.println(result);
+		System.out.println("결과 : " + result);
 
-		PrintWriter out = response.getWriter();
+		// PrintWriter out = response.getWriter();
 		if (result == 1) {
 
 			String path = MAIN + EXTENSION; // 그리고 index는 board안에 없음
@@ -138,12 +164,12 @@ public class BoardController extends HttpServlet {
 
 		int boardId = Integer.parseInt(request.getParameter("boardId"));
 
-		BoardVO detailSelect = dao.select(boardId);
+		BoardVO vo = dao.select(boardId);
 		
-		 System.out.println(detailSelect);
+		 System.out.println(vo);
 
-		if(detailSelect != null) {
-		request.setAttribute("detailSelect", detailSelect);
+		if(vo != null) {
+		request.setAttribute("vo", vo);
 
 		String path = BOARD_URL + DETAIL + EXTENSION;
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
@@ -154,13 +180,13 @@ public class BoardController extends HttpServlet {
 	// TODO : DB 테이블에서 상세 조회한 게시글 데이터를 전송하고, update.jsp 페이지로 호출
 	private void updateGET(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("updateGET()");
 		
 		int boardId = Integer.parseInt(request.getParameter("boardId"));
 
-		BoardVO detailSelect = dao.select(boardId);
+		BoardVO vo = dao.select(boardId);
 
-		System.out.println("updateGET()");
-		request.setAttribute("detailSelect", detailSelect);
+		request.setAttribute("vo", vo);
 		String path = BOARD_URL + UPDATE + EXTENSION;
 		RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 		dispatcher.forward(request, response);
@@ -188,7 +214,7 @@ public class BoardController extends HttpServlet {
 		System.out.println(result);
 		
 		if (result == 1) {	
-		String path = MAIN + EXTENSION; // 그리고 index는 board안에 없음
+		String path = DETAIL + SERVER_EXTENSION; // 그리고 index는 board안에 없음 detail.do로 가야함
 		// index로 보내줘야함 왜냐하면 index를 거치고 list.do로 가기 때문
         RequestDispatcher dispatcher = request.getRequestDispatcher(path);
         dispatcher.forward(request, response);
@@ -207,7 +233,8 @@ public class BoardController extends HttpServlet {
 		if(delete != null) {
 			int result = dao.delete(boardId);
 			if(result == 1) {
-				out.print("<script>alert('삭제 완료되었습니다!!'); location.href='index.jsp' </script>");
+				response.sendRedirect(MAIN + EXTENSION);
+			//	out.print("<script>alert('삭제 완료되었습니다!!'); location.href='index.jsp' </script>");
 			}
 		}
 
