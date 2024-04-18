@@ -15,7 +15,7 @@ public interface BoardQuery {
    public static final String SQL_INSERT = 
 		   "INSERT INTO " + TABLE_NAME + " VALUES "          
             + "(BOARD_SEQ.NEXTVAL, ?, ?, ?, SYSDATE)";
-    
+   
    
     // 전체 게시글 조회
    // SELECT * FROM BOARD ORDER BY BOARD_ID DESC;
@@ -29,6 +29,7 @@ public interface BoardQuery {
     public static final String SQL_SELECT_BY_BOARD_ID = 
             "SELECT * FROM " + TABLE_NAME + " WHERE " 
              + COL_BOARD_ID + " = ?";
+   
     
     // 상세 게시글 수정
 //    UPDATE BOARD
