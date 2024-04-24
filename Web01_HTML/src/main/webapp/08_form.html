@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <!--
+        * HTML form
+        - form 태그 : 데이터를 전송할 form data를 구성하는 태그
+        - action : 데이터를 전송할 url 정보
+        - method : 데이터 전송 방식
+          ㄴ GET 방식 : 사용자가 입력한 데이터를 url의 문자열로 전송
+          ㄴ POST 방식 : HTTP 요청 body에 데이터를 포함하여 전송
+        - input 태그 : 데이터를 입력하는 태그
+     -->
+   <h1>GET 방식</h1>
+   <form action="result.html" method="GET">
+       아이디<br>
+       <input type="text" name="userid"><br>
+       비밀번호<br>
+       <input type="password" name="password"><br>
+       <input type="submit" value="로그인">
+       <input type="reset" value="취소">
+   </form>
+   
+   <h1>POST 방식</h1>
+      <form action="result.html" method="POST">
+       아이디<br>
+       <input type="text" name="userid"><br>
+       비밀번호<br>
+       <input type="password" name="password"><br>
+       <input type="submit" value="로그인">
+       <input type="reset" value="취소">
+   </form>
+   
+</body>
+</html>
