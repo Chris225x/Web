@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS Table</title>
+<style type="text/css">
+th, td {
+    border-bottom: 1px solid grey;
+    border-collapse: collapse;
+}
+table {
+    width : 100%;
+}
+thead tr {
+    background: #ebebeb;
+}
+tbody tr:nth-child(even) {
+   background: lightgreen;
+}
+tbody tr:hover {
+   background: lightpink;
+}
+
+</style>
+
+
+</head>
+<body>
+	<h1>CSS Table</h1>
+	<table>
+		<caption style="caption-side: botton">급여</caption>
+		<thead>
+			<tr>
+				<th>월</th>
+				<th>급여액</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td>합계</td>
+				<td>15,000,000</td>
+			</tr>
+		</tfoot>
+		<tbody>
+		    <tr>
+		        <td>1월</td>
+		        <td>5,000,000</td>
+		    
+		    </tr>
+		    <tr>
+		        <td>2월</td>
+		        <td>5,000,000</td>
+		    
+		    </tr>
+		    <tr>
+		        <td>3월</td>
+		        <td>5,000,000</td>
+		    
+		    </tr>
+		</tbody>
+	</table>
+
+
+</body>
+</html>
