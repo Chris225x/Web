@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.7.1.slim.js">
+</script>
+<!-- 라이브러리는 외부에 있는 것을 긁어오는 것 코드를 
+     * jQuery
+     - 자바스크립트를 더 쉽게 사용하기 위한 목적으로 만들어진 라이브러리
+     - 장점 : 확장성이 좋고, 대중적으로 사용됨
+     - 단점 : 순수 javaScript 코드보다 속도가 느리다.
+-->
+<title>Intro</title>
+<script type="text/javascript">
+    // DOM이 전부 등록된 후에 실행되는 함수 : $(document).ready();
+    // 스크립트를 어느 위치에서 선언해도 문제가 없음
+	$(document).ready(function() {
+		$('h2').click(function() {
+			$(this).hide(); // this : h2를 가리킴
+		});
+	}); // end document document를 위에 놓아두면 아래있든 뭐든
+	// 작동 됨.
+</script>
+</head>
+<body>
+	<h1>jQuery 사용하기</h1>
+	<h2>클릭하세요! 그럼 제가 사라집니다.</h2>
+	<h2>h2 태그</h2>
+
+</body>
+</html>

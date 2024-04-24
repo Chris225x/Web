@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.7.1.slim.js">
+	
+</script>
+
+<title>Event</title>
+</head>
+<body>
+	<h1>jQuery Event</h1>
+	<img alt="전구" src="images/bulb_off.gif" id="bulb">
+	<br>
+	<br>
+	<p style="border: 1px solid black; background-color: green;">hover
+	</p>
+   <input type="text" id="name">
+	<script type="text/javascript">
+		// $(document).ready(function(){}); id랑 태그로 접근 가능, jquery속성 바꾸는 법
+		$(function() {
+			$('#bulb').mouseover(function() {
+				console.log($(this).attr('src'));
+				// attr('속성 이름') : 속성의 값을 가져옴
+				// attr('속성 이름', '값') : 속성의 값을 변경함
+				$(this).attr('src', 'images/bulb_on.gif');
+			}); // end bulb mouseover()   
+
+			// mouseout.mouseleave :
+			// - 마우스가 해당 영역 바깥으로 나갔을 때
+
+			$('#bulb').mouseout(function() {
+				console.log($(this).attr('src'));
+				// attr('속성 이름') : 속성의 값을 가져옴
+				// attr('속성 이름', '값') : 속성의 값을 변경함
+				$(this).attr('src', 'images/bulb_off.gif');
+
+			}); // end bulb.mouseout()
+
+			// hover(handlerIn, handlerOut)
+			// - handlerIn : 마우스가 해당 영역 위로 올라갔을 때 처리할 이벤트 핸들러
+			// - handlerOut : 마우스가 해당 영역 바깥으로 나갔을 때 처리할 이벤트 핸들러
+			function handlerIn() {
+				// css('스타일 이름') : 스타일 이름에 저장된 값을 출력
+				// css('스타일 이름', '값') : 특정 이름의 스타일 값을 변경
+				$('p').css('background-color', 'yellow');
+			} // end handlerIn()
+
+			function handlerOut() {
+				$('p').css('background-color', 'green');
+			} // end handlerOut()
+
+			$('p').hover(handlerIn, handlerOut);
+			
+			//focus : 포커스를 받았을 때 (입력 가능한 상태)
+			$('#name').focus(function(){
+			   $(this).css('background-color', 'lightyellow');
+			}); // end name.focus
+
+			// blur : 포커스를 잃었을 때
+			
+			$('#name').blur(function(){
+				$(this).css('background-color', 'white');
+			}); // end name.blur()
+			
+			// change: 입력된 내용이 변경됐을 때
+			$('#name').change(function(){
+				// val() : value값 출력
+				// val('값') : 요소의 value 값을 변경
+				// input태그이 입력된 값이 value임
+				let data = $(this).val().toUpperCase();
+				//저장,        name, 값, 대문자로 변경
+				$(this).val(data);
+				// $(this).val($(this).val().toUpperCase());
+			}); // end name.change()
+			
+		});
+	</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.1.slim.js">
+</script>
+</head>
+<body>
+   <h1>jQuery Event2</h1>
+   <p>TEST</p>
+   <script type="text/javascript">
+       // 하나의 HTML 요소에 여러 개의 event handler 등록 방법
+       // $('selector').on({
+       //       event1 : function(){};
+       //       event2 : function(){},
+       //       ...  
+       // });
+       $('p').on({
+    	   mouseover : function(){
+    		   $(this).css('background-color', 'lightyellow');
+    	   },
+    	   mouseout : function(){
+    		   $(this).css('background-color', 'lightgreen');
+    	   },
+    	   click : function(){
+    		  if($(this).text().match('TEST')) {
+    			  $(this).text('월요일');
+    		  } else {
+    			  $(this).text('TEST');
+    		  }
+    	   }
+       }); // end p.o()
+       
+   
+   </script>
+
+
+</body>
+</html>

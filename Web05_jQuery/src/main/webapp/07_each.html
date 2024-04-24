@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Each</title>
+<script src="https://code.jquery.com/jquery-3.7.1.slim.js"></script>
+<style type="text/css">
+.hot {
+	background-color: hotpink;
+}
+
+.cold {
+	background-color: aqua;
+}
+</style>
+</head>
+<body>
+	<h1>jQuery each() 함수</h1>
+	<u1>
+	<li>Java</li>
+	<li>Oracle</li>
+	<li>HTML</li>
+	<li>CSS</li>
+	<li>JavaScript</li>
+	<li>jQuery</li>
+	</u1>
+	<button id="btn">Toggle Style</button>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// '컬렉션'.each(handler);
+			// - each 반복문(for문과 비슷한 구죠)
+			// - handler : 컬렉션의 모든 원소에 적용할 기능(동작)
+
+			$('#btn').click(function() {
+				 console.log($('li'));
+				$('li').each(function(index, element) { // end li.each()
+					console.log('index :' + index + ', element : ' + element);
+				// * element 대신에 this를 사용할 수 있음
+				if(index % 2 == 0) {
+					$(this).toggleClass('hot');
+				} else {
+					$(this).toggleClass('cold');
+				}				
+				});
+			}); // end btn.click()
+		}); // end document()
+	</script>
+</body>
+</html>

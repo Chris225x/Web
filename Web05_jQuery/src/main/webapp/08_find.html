@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Find</title>
+<script src="https://code.jquery.com/jquery-3.7.1.slim.js"></script>
+</head>
+<body>
+	<div>
+		<ul class="item_list">
+			<li>
+				<div class="info">
+					<strong>과자</strong>
+					<div class="price">
+						<span class="val">1000</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="info">
+					<strong>음료수</strong>
+					<div class="price">
+						<span class="val">1000</span>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="info">
+					<strong>빵</strong>
+					<div class="price">
+						<span class="val">1000</span>
+					</div>
+				</div>
+			</li>
+
+		</ul>
+	</div>
+	<div>
+
+		<ul class="item_list"></ul>
+
+	</div>
+
+	<ul class="selected_list">
+
+	</ul>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// 각 li 요소를 선택(클릭)했을 때 정보를 출력
+			$('.item_list').on('click', 'li .info', function() {
+				console.log(this)
+				var optionName = $(this).find('strong').text();
+				var optionPrice = $(this).find('.price .val').text();
+				console.log('optionName : ' + optionName);
+				console.log('optionPrice :' + optionPrice);
+				
+				var optionItem = $('<li class="option_item"></li>');
+				var selectOptionName = $('<div class="option_name"></div>')
+				selectOptionName.text(optionName);
+				optionItem.append(selectOptionName);
+				$('.selected_list').append(optionItem); // 요소 추가
+			}); // item_1ist.on();
+		}); // end document()
+	</script>
+
+
+</body>
+</html>
