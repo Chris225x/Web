@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>While</title>
+</head>
+<body>
+	<h1>자바스크립트 while문</h1>
+	<div id="output"></div>
+
+	<script type="text/javascript">
+		let output = document.getElementById('output');
+
+		// 1. 구구단 출력 2 ~ 9단까지
+		for (let x = 2; x <= 9; x++) {
+			for (let y = 2; y <= 9; y++) {
+				output.innerHTML += x + 'x' + y + '=' + (x * y) + '<br>';
+			}
+			output.innerHTML += '<hr>';
+		}
+
+		for (let i = 0; i < 7; i++) {
+			for (let j = 0; j < 7; j++) {
+				if (i == 0 || i == 6 || j == 0 || j == 6 || i == j || i + j == 6) {
+					output.innerHTML += '＊'// (ㅁ 한자 3번)
+				} else {
+					output.innerHTML += '　' // (ㄱ 한자 1번)
+
+				}
+
+			}
+           output.innerHTML += '<br>';
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HW2</title>
+</head>
+<body>
+	<h1>연락처 프로그램</h1>
+	이름 : <input type="text" id="name"> <br>
+	연락처 : <input type="text" id="contact"> <br>
+	이메일 : <input type="text" id="email"> <br>
+	<br><br>
+	<button onclick="insert()">입력</button>
+	<button onclick="selectall()">전체검색</button>
+	인덱스 : <input type="number" id="index">
+	<button onclick="delect()">삭제</button>
+	<hr>
+	<div id="output"></div>
+
+	<script type="text/javascript">
+	   
+		let arr;
+	    let arrlist = new Array();
+		
+
+		let name = document.getElementById('name');
+		let contact = document.getElementById('contact');
+		let email = document.getElementById('email');
+		let index = document.getElementById('index');
+		let output = document.getElementById('output');
+		
+
+		function insert() {
+			// 입력 기능 구현
+			let name1 = name.value;
+			let contact1 = contact.value;
+			let email1 = email.value;
+			
+			arr = {
+				  name : name1,
+				  contact : contact1,
+				  email : email1,
+				  infomation : function() {
+			            return '번> 이름:' + arrlist[x].name + '|전화번호:' + arrlist[x].contact + '|이메일:' + arrlist[x].email + '<br>'
+			         } /* method */
+			};  
+			
+			console.log(arr);
+			arrlist.push(arr);
+			alert('입력');
+
+		}
+
+		function selectall() {
+			// 전체검색 기능 구현
+			output.innerHTML += '';
+			for (x in arrlist) {
+				output.innerHTML += x + ' : ' + arrlist[x].infomation() + '<br>';
+				
+				
+				
+			}
+            alert('전체 검색');
+		}
+
+		function delect() {
+			// 삭제 기능 구현
+		}
+	</script>
+
+</body>
+</html>

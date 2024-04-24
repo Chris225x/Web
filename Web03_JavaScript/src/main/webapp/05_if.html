@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>If</title>
+</head>
+<body>
+   <h1>JavaScript if문, 비교연산자, 삼항연산자</h1>
+   <input type="text" id="input">
+   <button onclick="input()">전송</button>
+   <div id="output"></div>
+
+   <script type="text/javascript">
+ 
+   
+        function input(){
+        	let output = document.getElementById('output');
+        	let x = document.getElementById('input').value;
+        	// input.value : 입력받은 데이터를 저장
+        	console.log(x);
+        	console.log(typeof x);
+        	
+        	// 자동 형 변환이 발생하여 값만 비교
+        	if(x > 0) {
+        		output.innerHTML += '양수<br>';
+        	} else if(x == 0) {
+        		output.innerHTML += '0<br>';
+        	} else if(x < 0) {
+        		output.innerHTML += '음수<br>';
+        	}
+        	
+        	// ===, !== : 타입과 값을 함께 비교
+        	let age = '18';
+        	if(age === 18) {
+        		output.innerHTML += '=== 연산자 결과 : 참<br>';
+        	} else {
+        		output.innerHTML += '=== 연산자 결과 : 거짓<br>';
+        	}
+        }
+   </script>
+
+</body>
+</html>

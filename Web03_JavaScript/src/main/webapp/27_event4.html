@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>자바스크립트 이벤트</h1>
+	<input type="text" autofocus onfocus="changeBgColor(this)"
+		onblur="resetBgColor(this)" onchange="toUpper(this)">
+
+	<select onchange="select(this)">
+		<option value="red">빨강</option>
+		<option value="green">녹색</option>
+		<option value="blue">파랑</option>
+
+	</select>
+
+	<script type="text/javascript">
+		// onfocus : 포커싱 됐을 때
+		function changeBgColor(input) {
+			input.style.backgroundColor = 'lightyellow';
+		}
+
+		// onblur : 포커싱 아웃 됐을 때
+		function resetBgColor(input) {
+			input.style.backgroundColor = 'white';
+		}
+
+		// onchange : 입력된 내용이 바뀌었을 때(입력 후 엔터나 탭키를 입력했을 때)
+		function toUpper(input) {
+			input.value = input.value.toUpperCase();
+		}
+
+		// 함수 생성 후 옵션 버튼을 클릭하면
+		// body 태그의 배경색이 선택된 글자색으로 변경되도록 코드 작성
+		// 힌트) 옵션 선택 "갑"으로 처리
+		
+	</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Intro</title>
+</head>
+<body>
+  <!--
+  * HTML에서 자바스크립트의 역할
+  1. HTML 요소(element)의 내용(content)을 변경
+  2. HTML 요소(element)의 속성(attribute)을 변경
+  3. HTML 요소(element)의 스타일(css)을 변경
+  4. 입력 양식(form)의 데이터 체크
+  
+  * 자바와 자바스크립트의 차이점
+  - 자바스크립트는 변수 타입이 없음 
+  학습 곡선은 내려감 하지만 딱 거기까지 형 변환 인식 못하면 에러 계속 남
+  - 자바스크립트에서 if문을 사용할 때 true/false를 처리하는 방법:
+     0, null, undefined ==> false로 처리
+     그 외 나머지(값이 있으면) ==> true로 처리
+    -->
+    
+    <!-- HTML 페이지 부분  -->
+    <h1 id="title">자바스크립트가 할 수 있는 일들</h1>
+    <button onclick="changeCSS()">클릭!!</button>
+    <!-- 버튼을 클릭하면 changeCSS() 함수를 호출 -->
+
+    <!-- 자바스크립트 부분  -->
+    <script type="text/javascript"> // 메소드는 클래스 밑에 있는 친구이고 function은 혼자 있는 친구 프리랜서
+        function changeCSS() {
+        	console.log('changeCSS() 호출');
+        	
+        	var title = document.getElementById('title');
+        	// document : 현재 HTML 문서의 정보를 갖고 있는 객체 그래서 요소들을 가지고 오려면 document를 써서 title을 가져오는것
+        	// getElementById : id 속성 값으로 요소 찾기
+        	
+        	title.style.backgroundColor = 'cyan';
+        	title.style.fontSize = '300%';
+        	title.style.color = 'red';	
+        }
+     
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Date</title>
+</head>
+<body>
+   <h1>자바스크립트 Date</h1>
+   <div id="output"></div>
+   
+   <script type="text/javascript">
+       let output = document.getElementById('output');
+       
+       //현재 시간
+       let curDate = new Date();
+       output.innerHTML += curDate.toString() + '<br>';
+       output.innerHTML += curDate.toUTCString() + '<br>';
+       output.innerHTML += curDate.toDateString() + '<br>';
+       
+       // 특정 시간의 Date 객체 생성
+       let yesterday = new Date(2024, 3, 22, 11, 12, 30);
+       output.innerHTML += yesterday + '<br>';
+       
+       // Date 객체에서 년/월/일/시/분/초 정보 확인
+       output.innerHTML += curDate.getFullYear() + '<br>'; // 0(1월) ~ 11(12월)
+       output.innerHTML += curDate.getMonth() + '<br>';  // 1 ~ 31
+       output.innerHTML += curDate.getDay() + '<br>'; // 0(일요일) ~ 6(토요일)
+       output.innerHTML += curDate.getHours() + '<br>'; // 0 ~ 3     
+       output.innerHTML += curDate.getMinutes() + '<br>'; // 0 ~ 59
+       output.innerHTML += curDate.getSeconds() + '<br>'; // 0 ~ 59
+       
+       // 1970년 1월 1일 0시 0분 0초를 기준으로
+       // mili-second(1/1000초)마다 1씩 증가된 시간
+       output.innerHTML += curDate.getTime() + '<br>';
+       
+   </script>
+
+</body>
+</html>

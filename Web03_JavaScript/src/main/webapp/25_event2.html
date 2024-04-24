@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <h1>자바스크립트를 사용한 HTML 이벤트 처리</h1>
+   <p onclick="this.style.backgroundColor='pink';">onclick 이벤트에서 코드 작성</p>
+   <p onclick="alert('hello');">다이얼로그 띄우기</p>
+   <p onclick="change(this)">onclick 속성에서 JS 함수 호출</p>
+   <p id="para">script에서 이벤트 리스너를 등록</p>
+   
+   <script type="text/javascript">
+        function change(para) {
+        	// para = this : 함수를 호출한 요소(element) 객체 전달
+        	console.log(para);
+        	para.innerHTML = '안녕?';
+        	para.style.border = '2px solid grey';
+        	para.style.backgroundColor = 'lavender';
+        	para.style.color = 'white';
+        	para.style.fontSize = '2em';
+        	// em : 브라우저에서 설정된 기본 폰트 크기
+        	para.style.margin = '50px';
+        }
+        
+        var para = document.getElementById('para');
+        // HTML element에 이벤트 핸들러 등록
+        para.onclick = function() {
+        	para.innerHTML = '변경';
+        	para.style.fontSize = '3em';
+        	para.style.fontWeight = 'bold';
+        }
+        
+   </script>
+
+</body>
+</html>

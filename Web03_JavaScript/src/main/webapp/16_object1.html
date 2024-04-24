@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Object1</title>
+</head>
+<body>
+
+	<h1>자바스크립트 객체(object)</h1>
+	<div id="output"></div>
+
+    <script type="text/javascript">
+
+		/*
+		 * 자바스크립트 객체 표기법 :
+		     {프로퍼티1 : 값1, 프로퍼티2 : 값2, ...}
+		 */
+
+		let output = document.getElementById('output');
+
+		let person = {
+			name : '토르',
+			age : 400,
+			email : 'thor@thunder.com'
+		};
+
+		console.log(typeof person);
+		output.innerHTML += person.toString() + '<br>';
+		output.innerHTML += '이름 : ' + person.name + '<br>';
+		output.innerHTML += '이름 : ' + person['name'] + '<br>';
+		output.innerHTML += '나이 : ' + person.age + '<br>';
+		output.innerHTML += '이메일 : ' + person.email + '<br>';
+		
+		output.innerHTML += '<hr>';
+		
+		//권장하지 않는 객체 생성 방법
+		let person2 = new Object();
+		person2.name = '둘리';
+		person2.age = 100000;
+		person2.email = 'dooli@hoi.com';
+		
+		// 생성자 함수를 작성하고 호출
+		function Person(name, age, email) {
+			this.name = name;
+			this.age = age;
+			this.email = email;
+			
+		}
+		
+		let p1 = new Person('유재석', 51, 'you@test.com');
+		let p2 = new Person('아이유', 30, 'iu@test.com');
+		
+		for(x in p1) {
+			output.innerHTML += x + ' : ' + p1[x] + '<br>';
+		}
+		</script>
+
+</body>
+</html>

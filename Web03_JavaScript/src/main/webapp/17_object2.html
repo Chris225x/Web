@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Object2</title>
+</head>
+<body>
+	<h1>자바스크립트 객체</h1>
+	<div id="output"></div>
+
+	<script type="text/javascript">
+		let person = {
+			name : '유재석',
+			phone : {
+				home : '02-1234-5678',
+				moblie : '010-1234-5678'
+			}, /* object */
+			email : [ 'test@test.com', 'yoo@test.com' ], /* Array */
+			information : function() {
+				return this.name + ', ' + this.phone.home + ', '
+						+ this.email[0]
+			} /* method */
+		// this : person 객체
+		};
+
+		let output = document.getElementById('output');
+
+		output.innerHTML += '이름 : ' + person.name + '<br>';
+		output.innerHTML += '집전화 : ' + person.phone.home + '<br>';
+		output.innerHTML += '핸드폰 : ' + person.phone.mobile + '<br>';
+		output.innerHTML += '이메일1 : ' + person.email[0] + '<br>';
+		output.innerHTML += '이메일2 : ' + person.email[1] + '<br>';
+		output.innerHTML += '전체 정보 : ' + person.information() + '<br>';
+	</script>
+
+
+
+</body>
+</html>

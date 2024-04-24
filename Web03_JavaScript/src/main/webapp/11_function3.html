@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Function3</title>
+</head>
+<body>
+    <h1>자바스크립트 함수 기본 파라미터(default parameter)</h1>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+    let output = document.getElementById('output');
+    
+    function sub(x, y = 10) {
+    	if(isNaN(x)){
+    		return 'x는 반드시 숫자를 입력하세요!';
+    	}
+    	return x - y;
+    }
+    
+    var result = sub(100); // x = 100, y = 10
+    output.innerHTML += 'result = ' + result + '<br>';
+    
+    var result = sub(100, 200); // x = 100, y = 200
+    output.innerHTML += 'result = ' + result + '<br>';
+    
+    function sub2(x = 1, y) {
+    	return x - y;
+    }
+    
+    var result = sub(10); // x = 100, y = undefined
+    output.innerHTML += 'result = ' + result + '<br>';
+    // 함수를 호출할 때 전달된 인자값은 정의한 함수의 매개변수 순서대로 복사
+    // -> 함수를 정의할 때 기본 파라미터가 필요하면
+    //    다른 파라미터들을 먼저 선언하고, 기본 파라미터들을 나중에 선언
+    
+    // 자바스크립트는 변수에 함수를 저장하는 것이 가능
+    var myFunction = sub;
+    var result = myFunction(10, 5);
+    output.innerHTML += 'result = ' + result + '<br>';
+    
+    var myFunction2 = function(x, y) {
+    	return x + y;
+    }
+    
+    var result = myFunction2(10, 20);
+    output.innerHTML += 'result = ' + result + '<br>';
+    
+    // 중복 함수(Nested Function)
+    function test() {
+    	output.innerHTML += 'test() 내부 : <br>';
+    	function nested() {
+    		output.innerHTML += 'nested() 내부 : <br>';
+    	}
+    	nested();
+    }
+    test();
+    
+    
+    </script>    
+
+</body>
+</html>

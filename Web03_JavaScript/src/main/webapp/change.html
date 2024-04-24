@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Change</title>
+</head>
+<body>
+	<input type="text" id="input">
+	<button onclick="change()">변경</button>
+	<div id="content">
+		<p style="color: red">무슨 색 일까요?</p>
+		<p style="color: blue">무슨 색 일까요?</p>
+		<p style="color: red">무슨 색 일까요?</p>
+		<p style="color: red">무슨 색 일까요?</p>
+
+	</div>
+
+	<script type="text/javascript">
+		// input 태그에 "1"을 입력하고 버튼을 클릭하면
+		// div 태그 중 빨간색 p 태그의 color을 변경
+		// input 태그에 "2"를 입력하고 버튼을 클릭하면
+		// div 태그 자식 태그 중 파란색 p 태그의 color를 변경
+
+		function change() {
+			let input = document.getElementById('input').value;
+			let content = document.getElementById('content');
+			let list = content.children;
+			console.log(list);
+
+			if (input == '1') {
+				for (let i = 0; list.length; i++) {
+					if (list[i].style.color == 'red') {
+						list[i].style.color = 'yellow';
+					}
+				}
+				//content.children[0].style.color = 'yellow';
+				//content.children[2].style.color = 'yellow';
+			} else if (input == '2') {
+				for (let i = 0; list.length; i++) {
+					if (list[i].style.color == 'blue') {
+						list[i].style.color = 'green';
+					}
+				}
+
+				//content.children[1].style.color = 'green';
+				//content.children[3].style.color = 'green';
+			} else {
+				alert('1과 2만 입력해주세요.')
+			}
+
+		}
+	</script>
+
+
+</body>
+</html>

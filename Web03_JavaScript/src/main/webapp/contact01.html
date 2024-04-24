@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>연락처 프로그램</title>
+</head>
+<body>
+   <!-- Javascript를 이용한 간단한 연락처 프로그램 -->
+   <h1>연락처 프로그램</h1>
+   이름 : <input type="text" id="name"><br>
+   연락처 : <input type="text" id="phone"><br>
+   이메일 : <input type="text" id="email"><br><br>
+   <button onclick="insert()">입력</button>
+   <button onclick="selectAll()">전체검색</button>
+   인덱스 : <input type="number" id="index">
+   <button onclick="deleteByIndex()">삭제</button>
+   <hr>
+   <div id="output"></div>
+   
+   <script type="text/javascript">
+      let contact; // 입력한 이름, 연락처, 이메일 값을 객체로 저장
+      let contactList = new Array(); // 연락처 객체를 배열로 저장
+      
+      let name = document.getElementById('name');
+      let phone = document.getElementById('phone');
+      let email = document.getElementById('email');
+      let index = document.getElementById('index');
+      let output = document.getElementById('output');
+      
+      function insert() {
+         let nameVal = name.value;
+         let phoneVal = phone.value;
+         let emailVal = email.value;
+         
+         contact = {
+               name : nameVal,
+               phone : phoneVal,
+               email : emailVal
+         };
+         console.log(contact);
+         contactList.push(contact);
+         alert('입력완료');
+         selectAll();
+      }
+      
+      function selectAll() {
+         output.innerHTML = ''; // div 텍스트 초기화
+         for(x in contactList) {
+            output.innerHTML += x + '번>'
+            + ' 이름 : ' + contactList[x].name + ' | '
+            + '전화번호 : ' + contactList[x].phone + ' | '
+            + '이메일 : ' + contactList[x].email + '<br>';
+         }
+         alert('전체 검색 완료!');
+      }
+      
+      function deleteByIndex() {
+         var indexValue = index.value;
+         contactList.splice(indexValue, 1);
+         alert('삭제 완료');
+         selectAll();
+      }
+   </script>
+   
+   
+      
+</body>
+</html>
+
+
+
+
+
+
+
+

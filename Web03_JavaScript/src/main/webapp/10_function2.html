@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Function2</title>
+</head>
+<body>
+     <h1>자바스크립트 함수</h1>
+     <div id="output"></div>
+     <script type="text/javascript">
+          // * 자바스크립트의 overloading
+          // - 자바스크립트 함수는 매개변수의 개수와 타입을 체크하지 않기 때문에
+          //   함수 overloading을 할 수 없음
+          //   -> 같은 이름으로 함수를 정의하면,
+          //      나중에 정의한 함수가 이전 함수의 정의를 덮어씌움(overriding)
+          // 이름 같이 지으면 안됨
+          
+          var output = document.getElementById('output');
+          
+ 
+          
+          // 생성 안됨
+          function add(x) {
+        	  return x + 1;
+          } // end add() 이게 사라짐
+          
+          function add(x, y = 1) {
+        	  // y = 1 : default 값.
+        	  // 함수 호출 시 y 인자 값이 없는 경우 기본값으로 설정
+        	  return x + y;
+        	  output.innerHTML += 'result = ' + result + '<br>';
+          } // end add()
+          
+          var result = add(10, 20);
+          output.innerHTML += 'result = ' + result + '<br>';
+          
+          var result = add(10);
+          output.innerHTML += 'result = ' + result + '<br>';
+          
+          // : Not a Number(숫자가 아님).
+          // isNaN(a) : a가 숫자가 아니면 true, 숫자면 false를 리턴
+          function add2(x, y) {
+        	  if(isNaN(x) || isNaN(y)) {
+        		  return '숫자가 아니므로 덧셈을 할 수 없습니다.';
+        	  }
+        	  return x + y; 
+          } // end add2()
+          
+          result = add2(10, 'hello');
+          output.innerHTML += 'result = ' + result + '<br>';
+          
+          result = add2(10, 20);
+          output.innerHTML += 'result = ' + result + '<br>';
+          
+     </script>
+
+
+
+
+
+</body>
+</html>

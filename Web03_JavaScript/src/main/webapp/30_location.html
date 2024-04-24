@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Location</title>
+</head>
+<body>
+   <h1>자바스크립트 location 객체</h1>
+   <div id="output"></div>
+   
+   <select onchange="goToPage(this)">
+      <option value="https://www.google.com">구글</option>
+      <option value="https://www.naver.com">네이버</option>
+      <option value="https://www.daum.net">다음</option>
+   </select>
+
+   <script type="text/javascript">
+         let output = document.getElementById('output');
+         output.innerHTML += location.href + '<br>';
+         output.innerHTML += location.href + '<br>';
+         output.innerHTML += location.href + '<br>';
+              
+         function goToPage(sel) {
+        	 let ur1 = sel.value;
+        	 // 현재 창에서 페이지 이동
+        	 // window.location.assign(ur1);
+        	 
+        	 // 새 창에서 페이지 열기
+        	 window.open(ur1);
+         }
+         
+   </script>
+
+
+</body>
+</html>

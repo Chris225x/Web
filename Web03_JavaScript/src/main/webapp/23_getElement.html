@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getElement</title>
+</head>
+<body>
+     <h1>HTML 요소(element)를 찾는 방법</h1>
+     <p id="p1">단락1</p>
+     <p id="p1">단락2</p>
+     <p class="c1">단락3</p>
+     <p class="c1">단락4</p>
+     
+     <script type="text/javascript">
+         // *  자바스크립트를 사용하여 HTML element를 찾는 방법;
+         // 1. getElementById('id');
+         // 2. getElementByTagname('tagName');
+         // 3. getElementByClassName('className');
+         // 4. CSS 선택자 : querySelectorAll('선택자'), querySelector('선택자')
+         // 5. HTML Object Collection : body, form, images
+         
+         document.getElementById('p1').style.backgroundColor = 'lightgreen';
+         // p1 아이디가 두 개 존재하지만, 1개만 적용됨
+         
+         // p 태그를 찾아서 배경색 변경 여러개기 때문에 elements임
+         let ps = document.getElementsByTagName('p');
+         
+         for(let i = 0; i < ps.length; i++) {
+        	 ps[i].style.backgroundColor = 'lightblue';
+        	 console.log('i');
+        	 
+         }
+         
+         // class = 'c1'을 찾아서 배경색 변경
+         ps = document.getElementsByClassName('c1');
+         for(let i = 0; i < ps.length; i++) {
+        	 ps[i].style.backgroundColor = 'cyan';
+         }
+         
+         // CSS 선택자를 찾아서 변경
+         document.querySelector('.c1').style.backgroundColor = 'yellow';
+         ps = document.querySelectorAll('.c1'); // 모든 c1 클래스 가져오기
+         for(let i = 0; i < ps.length; i++) {
+        	 ps[i].innerHTML = '선택자 변경';
+         }
+     </script>
+
+
+
+</body>
+</html>

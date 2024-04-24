@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Method</title>
+</head>
+<body>
+	<h1>자바스크립트 메소드 : 객체가 가지고 있는 함수</h1>
+	<div id="output"></div>
+
+	<script type="text/javascript">
+		let output = document.getElementById('output');
+		function Unit(money, gas, hp) {
+			/*property : 객체 내에 있는 변수*/
+			this.money = money;
+			this.gas = gas;
+			this.hp = hp;
+
+			/* method */
+			this.attack = function(Unit) {
+				Unit.hp -= 10;
+				output.innerHTML += Unit.hp + '<br>';
+			};
+			
+			this.toString = function() {
+				return 'money : ' + this.money + ', gas : '
+				+ this.gas + ' , hp : ' + this.hp;
+				
+			}
+		}
+		
+		let zilot = new Unit(100, 0, 60);
+		let marine = new Unit(50, 0, 40);
+		zilot.attack(marine);
+		zilot.attack(marine);
+		
+		output.innerHTML += '유닛 정보 : ' + marine + '<br>';
+	</script>
+
+</body>
+</html>

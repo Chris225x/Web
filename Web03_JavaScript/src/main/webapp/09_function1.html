@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Function1</title>
+</head>
+<body>  
+      <h1>자바스크립트 함수(function)</h1>
+      <div id="output"></div>
+      
+      <script type="text/javascript">
+      /*
+           * 자바스크립트에서 함수 작성 방법
+           -
+           function 함수이름(매개변수1, 매개변수2, ...) {
+    	     실행 코드;
+           }
+      
+           - 함수의 호출 :
+        	   함수이름(인자값1, 인자값2, ...)
+           - 함수의 정의 부분은 script 상단으로 이동
+               -> 함수를 정의하기 전에 호출할 수 있음
+               
+            * 자바스크립트 함수의 매개변수 규칙
+            1. 자바스크립트 함수는 매개변수의 타입을 명시하지 않음
+            2. 자바스크립트 함수는 전달받는 인자값의 타입을 체크하지 않음
+            3. 자바스크립트 함수는 전달받는 인자값의 개수를 체크하지 않음
+            
+      */
+      
+      
+      let output = document.getElementById('output');
+      let result = add(1, 2); // 함수 호출
+      output.innerHTML += 'result = ' + result + '<br>';
+      
+      function add(x, y) {
+    	  console.log('x : ' + x + ', y : ' + y);
+    	  return x + y;
+      }   
+      
+      result = add('Hello', 'JavaScript');
+      output.innerHTML += 'result = ' + result + '<br>';
+      
+      result = add('Hello');
+      output.innerHTML += 'result = ' + result + '<br>';
+         
+      </script>
+        
+        
+
+</body>
+</html>

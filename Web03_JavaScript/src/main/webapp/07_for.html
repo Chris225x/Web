@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For</title>
+</head>
+<body>
+    <h1>자바스크립트 for문, 전역/지역 변수</h1>
+    <div id="output"></div>
+    <script type="text/javascript">
+        // * 자바스크립트의 전역 변수, 지역 변수 선언
+        // - 자바스크립트의 전역 변수(Gloval Variable)
+        //   <script> 태그 아래에 선언된 변수
+        //   선언된 위치와 상관없이 변수를 사용할 수 있음
+        //   주의) 전역 변수의 사용보다는 함수 내에서
+        //      지역 변수로 선언하여 사용하는 것이 안전
+        
+        // - 자바스크립트의 지역 변수(Local Variable) :
+        //   함수(function) 내5461 1178 0848 7030부에서 선언된 변수
+        
+        let output = document.getElementById('output');
+        
+        // output.innerHTML += 'i = ' + i + '<br>';
+        // let i = 1;
+        
+        // 자바스크립트의 반복문
+        // - 자바 문법과 동일
+        // var가 옛날 let이 최신 버전
+        for(let x = 1; x <= 6; x++) { // x는 for문 안에 지역변수
+        	output.innerHTML
+        	+= '<h' + x + '>heading' + x + '</h' + x + '>';
+        }
+        
+        let x = 1;
+        function test() {
+        	let n = 10; // 지역변수
+        	output.innerHTML += 'test() 내부 : x =' + x + '<br>';
+        	output.innerHTML += 'test() 내부 : n =' + n + '<br>';	
+        }
+        // 함수 호출(call)
+        test();
+    </script>
+
+</body>
+</html>

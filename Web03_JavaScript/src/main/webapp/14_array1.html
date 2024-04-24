@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <h1>자바스크립트 배열(Array)</h1>
+    <div id="output"></div>
+
+    <script type="text/javascript">
+        let output = document.getElementById('output');
+        
+        // 자바스크립트에서 배열 선언/초기화 방법1:
+        // var 배열이름 = [원소1, 원소2, ...]
+        var movies = ['파묘', '듄', '윙카'];
+        for(let i = 0; i < movies.length; i++) {
+        	output.innerHTML += movies[i] + '<br>';
+        }
+        
+        for(x in movies) {
+        	output.innerHTML += x + ' : ' + movies[x] + '<br>';
+        }
+        
+        // 배열 선언/초기화 방법2
+        var games = new Array('스타크래프드', 'LOL');
+    </script>
+        
+
+</body>
+</html>

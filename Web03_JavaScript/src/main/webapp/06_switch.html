@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Switch</title>
+</head>
+<body>
+   <h1>자바스크립트 Switch</h1>
+   <div id="output"></div>
+   
+   <script type="text/javascript">
+      // * 자바스크립트의 switch문 사용
+      // - 자바스크립트는 숫자 타입을 정수/실수로 구분하지 않음
+      // - 실수 타입도 switch-case 구문에서 사용할 수 있음
+      // - 자바는 실수 타빙을 switch-case 구문에서 사용할 수 없음
+      let output = document.getElementById('output');
+      
+      let x = '2';
+      // switch-case 문에서는 형 변환하여 비교하지 않음
+      x = parseInt(x); // parseInt() : 숫자로 변경
+      switch(x) {
+      case 1:
+    	  output.innerHTML += '하나<br>';
+    	  break;
+      case 2:
+    	  output.innerHTML += '둘<br>';
+          break;
+      default:
+    	  output.innerHTML += '모르는 값<br>'
+    	  break;
+      }
+      
+      let y = 1.1;
+      switch(y) {
+      case 1.0:
+    	  output.innerHTML += '1.0<br>';
+    	  break;
+      case 1.1:
+    	  output.innerHTML += '1.1<br>';
+    	  break;
+      defalut :
+    	  output.innerHTML += '모르는 값<br>';
+    	  break;
+      }
+      
+   
+   </script>
+
+
+
+</body>
+</html>

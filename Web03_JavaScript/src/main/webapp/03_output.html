@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+     <h1>자바스크립트 출력 방법</h1>
+     <h2>document.write() 함수 사용</h2>
+
+     <script type="text/javascript">
+         document.write('<p>안녕하세요</p>');
+     </script>
+     <hr>
+     
+     <button onclick="test1()">Click!</button>
+     
+     <h2>innerHTML 속성 사용</h2>
+     <div id="output"></div>
+     <button onclick="test2()">Click!</button>
+     
+     <h2>다이얼로그(dialog) 사용</h2>
+     <button onclick="showAlert()">alert</button>
+     <button onclick="showConfirm()">confirm</button>
+     <button onclick="showPrompt()">prompt</button>
+     
+     <h2>콘솔 로그 출력</h2>
+     <button onclick="showLog()">로그 출력</button>
+     
+     <script type="text/javascript">
+        /*
+           * JavaScript 디스플레이 속성
+           - innerHTML : HTML 요소에 작성
+           - document.write() : HTML 문서에 작성
+           - windoe.alert() : 경고 박스에 작성
+           - console.log() : 브라우저 콘솔 창에 작성
+        */
+        
+        function test1() {
+        	   document.write('<p>test1() 호출</p>');
+           } // end test1()
+        
+        function test2() {
+        	   var output = document.getElementById('output');
+        	   output.innerHTML = 'test2() 출력 완료!';
+        	   
+           } // end test2()
+           
+           function showAlert() {
+               alert(1 + 2 + '입니다.');
+            } // end showAlert()
+           
+           function showConfirm() {
+        	   var result = confirm('삭제하시겠습니까?');
+        	   // confirm의 선택 결과를 리턴 : 확인(true), 취소(false)
+        	   document.getElementById('output').innerHTML = result;
+           } // end showConfirm()
+           
+           function showPrompt() {
+        	   var result = prompt('이름 입력', '이름');
+        	   // prompt에 입력된 결과를 리턴 : 문자열
+        	   document.getElementById('output').innerHTML = result;
+           } // end showPrompt()
+           
+           function showLog() {
+        	   console.log('테스트입니다.');
+           } // end showLog
+        
+     </script>
+
+
+
+</body>
+</html>

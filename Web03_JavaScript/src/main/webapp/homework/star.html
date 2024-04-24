@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>질럿과 마린의 대결</h1>
+	<img alt="" src="../images/zilot.png" onclick="attackToMarine()">
+	&nbsp; >
+	<img alt="" src="../images/marine.png" style="transform: scaLeX(-1)">
+	<div id="output"></div>
+
+	<script type="text/javascript">
+		// 생성자 함수
+		function Unit(name, hp, power, defence) {
+			this.name = name;
+			this.hp = hp;
+			this.power = power;
+			this.defence = defence;
+
+			this.attack = function(Unit) {
+				let damage = this.power - Unit.defence;
+                // 예외 처리 : damage가 음수가 되면 damage가 0이 되도록 함
+                
+                if(damage < 0) {
+                	damage = 0;
+                }
+                
+				Unit.hp = Unit.hp - damage;
+
+				// 예외 처리 : damage가 어쩌구
+				
+				// 예외 처리 : 공격당한 유닛의 hp가 0 미만이 되면 사망 처리
+				if(Unit.hp < 0) {
+					alert(Unit.name + '이(가) 사망하였습니다.');
+					output.innerHTML = '';
+					return;
+				}
+				
+				
+				output.innerHTML += this.name + '이(가) 공격했다. <br>';
+				output.innerHTML += Unit.name + '은(는) 공격을 받았다. <br>';
+				output.innerHTML += Unit.name + '은(는) ' + damage
+						+ '의 데미지를 입었다. <br>';
+				output.innerHTML += Unit.name + '의 남은 HP : ' + Unit.hp + '<br>'
+				output.innerHTML += '<hr>';
+
+			}
+		}
+		
+		// 객체 선언
+		let zilot = new Unit('질럿', 100, 40, 10);
+		let marine = new Unit('마린', 50, 5, 5);
+		
+		function attackToMarine() {
+			alert('내 목숨을 아이어에!');
+			zilot.attack(marine);
+		}
+		
+		function attackToZilot() {
+			alert('한 판 붙어볼까, 애송이?');
+			marine.attack(zilot);
+		}
+		
+	</script>
+
+
+
+</body>
+</html>

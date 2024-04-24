@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HW1</title>
+</head>
+<body>
+   <h1>두 개의 숫자를 입력받아서 사칙 연산을 하는 웹사이트</h1>
+   <input type="number" id="x">
+   <input type="number" id="y">
+   <br><br>
+   <button onclick="add()">더하기</button>
+   <button onclick="sub()">빼기</button>
+   <button onclick="multi()">곱하기</button>
+   <button onclick="div()">나누기</button>
+   <button onclick="test()">내용초기화</button>
+   <br><br>
+   <div id="output"></div>
+   
+   <script type="text/javascript">    
+   let x = document.getElementById('x');
+   let y = document.getElementById('y');
+   let output = document.getElementById('output'); 
+   
+   function add() {
+	   let x = document.getElementById('x').value;
+	   let y = document.getElementById('y').value;
+	   let output = document.getElementById('output'); 
+	   
+	   // input 태그의 입력된 값을 가져오기 위해서는
+	   // 함수가 실행되는 시점의 value 값을 가져와야 함
+	   console.log(x);
+	   console.log(typeof x);
+	   console.log(y);
+	   console.log(typeof y);
+	   x = parseInt(x);
+	   y = parseInt(y);
+	   let sum = x + y;
+	   output.innerHTML += x + '+' + y + '=' + sum + '<br>';
+	   
+   }
+   
+   
+   function sub() {
+	   let output = document.getElementById('output');
+	   let x = document.getElementById('x').value;
+	   let y = document.getElementById('y').value;
+	   x = parseInt(x);
+	   y = parseInt(y);
+	   let sub = x - y;
+	   output.innerHTML += '빼기 값 = ' + sub + '<br>';
+	   
+   }
+   
+   function multi() {
+	   let output = document.getElementById('output');
+	   let x = document.getElementById('x').value;
+	   let y = document.getElementById('y').value;
+	   x = parseInt(x);
+	   y = parseInt(y);
+	   let multi = x * y;
+	   output.innerHTML += '곱하기 값 = ' + multi + '<br>';
+	   
+   }
+   
+   function div() {
+	   let output = document.getElementById('output');
+	   let x = document.getElementById('x').value;
+	   let y = document.getElementById('y').value;
+	   x = parseInt(x);
+	   y = parseInt(y);
+	   let div = x / y;
+	   output.innerHTML += '나누기 값 = ' + div + '<br>';
+	   
+   }
+   
+   function test() {
+	   output.innerHTML = "";
+   }
+   
+   </script>
+
+</body>
+</html>

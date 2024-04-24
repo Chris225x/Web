@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Number</title>
+</head>
+<body>
+
+   <h1>자바스크립트 Number</h1>
+   <input type="number" id="num">
+   <button onclick="test()">출력</button>
+   <div id="output"></div>
+   
+   <script type="text/javascript">
+          let output = document.getElementById('output');
+          
+          // * 자바스크립트 숫자의 특징
+          // 1) 지수표기법 사용이 가능하다.
+          let x = 123e5; // 123 * 10^5
+          let y = 123e-5; // 123 * 10^-5
+          output.innerHTML += x + '<br>';
+          output.innerHTML += y + '<br>';
+          
+          // 2) 정수는 15자릿수로 표현한다.
+          x = 999999999999999;
+          y = 999999999999999;
+          output.innerHTML += x + '<br>';
+          output.innerHTML += y + '<br>';
+          
+          // 3) 소수점 연산은 100% 정확하지 않다.
+          x = 0.1 + 0.2;
+          output.innerHTML += x + '<br>';
+          // 해결책 : 정수 형태로 연산을 변환한다.
+          let a = 0.1;
+          let b = 0.2;
+          x = (a * 10 + b * 10) / 10;
+          output.innerHTML += x + '<br>';
+          
+          function test() {
+        	  // input value는 문자열
+        	  console.log(num.value);
+        	  // 문자를 정수로 변환 : parseInt()
+        	  // 문자를 실수로 변환 : parseFloat()
+        	  output.innerHTML += parseInt(num.value) + 1;
+          }
+    </script>
+
+</body>
+</html>

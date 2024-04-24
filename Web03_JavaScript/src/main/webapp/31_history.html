@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>history</title>
+</head>
+<body>
+    <h1>자바스크립트 history 객체</h1>
+    <a href="https://www.google.com">구글</a>
+    <button onclick="goBack()">Back</button>
+    <button onclick="goForward()">Forward</button>
+    
+    <script type="text/javascript">
+          function goBack() {
+        	  window.history.back(); // 뒤로 가기
+          }
+          
+          function goForward() {
+        	  window.history.forward(); // 앞으로 가기
+          }
+    </script>
+</body>
+</html>
